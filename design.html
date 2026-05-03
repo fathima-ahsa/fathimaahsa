@@ -5,118 +5,52 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Design Portfolio — Fathimathul Ahsa</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:400,700&family=DM+Sans:300,400,500,600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 
 <style>
 :root{
---bg:#080808;--card:#130f15;--border:#281d2c;
---accent:#e8449a;--text:#f5f0f8;--muted:#9a8fa8;
+--bg:#080808;--surface:#0f0b11;--card:#130f15;--border:#281d2c;
+--accent:#e8449a;--accent2:#f7a8d0;--glow:rgba(232,68,154,.14);
+--dim:rgba(232,68,154,.07);--text:#f5f0f8;--muted:#7a6e82;--tag:#1a121e
 }
 
-*{margin:0;padding:0;box-sizing:border-box}
-
-body{
-background:var(--bg);
-color:var(--text);
-font-family:'DM Sans',sans-serif;
-}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif}
 
 /* NAV */
-nav{
-position:fixed;top:0;width:100%;
-display:flex;justify-content:space-between;
-padding:18px 40px;
-background:rgba(8,8,8,.9);
-border-bottom:1px solid var(--border);
-z-index:100;
-}
-
-nav a{
-text-decoration:none;
-color:var(--muted);
-font-size:13px;
-}
-
-nav .logo{
-font-family:'Playfair Display',serif;
-color:var(--accent);
-}
-
-nav .menu{
-display:flex;gap:24px;
-}
-
-nav a:hover, nav a.active{
-color:var(--accent);
-}
+nav{position:fixed;top:0;width:100%;display:flex;justify-content:space-between;padding:18px 40px;background:rgba(8,8,8,.9);border-bottom:1px solid var(--border);z-index:100}
+.nl{font-family:'Playfair Display',serif;color:var(--accent);text-decoration:none}
+.nm{display:flex;gap:24px}
+.nm a{color:var(--muted);text-decoration:none;font-size:13px}
+.nm a.active,.nm a:hover{color:var(--accent)}
 
 /* HERO */
-.hero{
-padding:120px 40px 60px;
-max-width:1100px;
-margin:auto;
-}
-
-.hero h1{
-font-family:'Playfair Display',serif;
-font-size:48px;
-margin-bottom:10px;
-}
-
-.hero p{
-color:var(--muted);
-max-width:520px;
-}
+.ph{padding:120px 40px 60px;max-width:1100px;margin:auto}
+.pt{font-family:'Playfair Display',serif;font-size:48px;margin-bottom:10px}
+.ps{color:#9a8fa8;max-width:520px}
 
 /* PROJECTS */
-.projects{
-padding:80px 20px;
-max-width:1100px;
-margin:auto;
-}
-
-.projects h2{
-text-align:center;
-margin-bottom:40px;
-font-size:28px;
-}
+.projects{padding:80px 20px;max-width:1100px;margin:auto}
+.projects h2{text-align:center;margin-bottom:40px;font-size:28px}
 
 .project-grid{
 display:grid;
-grid-template-columns:repeat(3,1fr);
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
 gap:20px;
 }
 
 .project-card{
-position:relative;
-height:260px;
-border-radius:16px;
-overflow:hidden;
-cursor:pointer;
+background:var(--card);
 border:1px solid var(--border);
-transition:.3s;
+border-radius:14px;
+padding:24px;
+cursor:pointer;
+transition:.25s ease;
 }
 
 .project-card:hover{
-transform:translateY(-6px);
 border-color:var(--accent);
-}
-
-.project-img{
-width:100%;
-height:100%;
-object-fit:cover;
-}
-
-/* overlay */
-.overlay{
-position:absolute;
-inset:0;
-background:linear-gradient(to top, rgba(0,0,0,.85), rgba(0,0,0,.2));
-display:flex;
-flex-direction:column;
-justify-content:flex-end;
-padding:18px;
+transform:translateY(-4px);
 }
 
 .project-title{
@@ -125,53 +59,30 @@ font-weight:600;
 }
 
 .project-content{
-font-size:13px;
-color:#c7b8d1;
-opacity:0;
 max-height:0;
-transition:.3s;
+overflow:hidden;
+opacity:0;
+transition:.3s ease;
+font-size:14px;
+color:#9a8fa8;
+margin-top:10px;
 }
 
-/* expand */
 .project-card.active .project-content{
+max-height:200px;
 opacity:1;
-max-height:120px;
-margin-top:6px;
-}
-
-/* minimal cards */
-.project-card.minimal{
-background:var(--card);
-}
-
-.project-card.minimal .overlay{
-background:none;
-justify-content:center;
 }
 
 /* FOOTER */
-footer{
-padding:40px;
-text-align:center;
-color:var(--muted);
-border-top:1px solid var(--border);
-margin-top:60px;
-}
-
-/* MOBILE */
-@media(max-width:768px){
-.project-grid{
-grid-template-columns:1fr;
-}
-}
+footer{padding:40px;text-align:center;color:var(--muted)}
 </style>
 </head>
 
 <body>
 
 <nav>
-<a href="index.html" class="logo">Fathimathul Ahsa</a>
-<div class="menu">
+<a href="index.html" class="nl">Fathimathul Ahsa</a>
+<div class="nm">
 <a href="index.html">Home</a>
 <a href="#projects" class="active">Projects</a>
 <a href="legal.html">Legal</a>
@@ -179,65 +90,46 @@ grid-template-columns:1fr;
 </nav>
 
 <!-- HERO -->
-<div class="hero">
-<h1>Design Portfolio</h1>
-<p>Visual identity, social media strategy, and event design across university and institutional platforms.</p>
+<div class="ph">
+<h1 class="pt">Design Portfolio</h1>
+<p class="ps">Visual identity, social media strategy, and digital design across campus organisations and large-scale events.</p>
 </div>
 
 <!-- PROJECTS -->
 <section id="projects" class="projects">
-<h2>Selected Work</h2>
+<h2>Projects</h2>
 
 <div class="project-grid">
 
-<!-- TOP ROW -->
-
 <div class="project-card" onclick="toggleProject(this)">
-<img src="kurukshetra.jpg" class="project-img">
-<div class="overlay">
 <div class="project-title">Kurukshetra 2025–26</div>
-<div class="project-content">Premium sports branding, poster systems, and event identity.</div>
-</div>
+<div class="project-content">Led full visual identity and digital design execution.</div>
 </div>
 
 <div class="project-card" onclick="toggleProject(this)">
-<img src="astra.jpg" class="project-img">
-<div class="overlay">
 <div class="project-title">Astra 2025–26</div>
-<div class="project-content">High-energy sports visuals and digital campaign design.</div>
-</div>
+<div class="project-content">Built branding systems and campaign creatives.</div>
 </div>
 
 <div class="project-card" onclick="toggleProject(this)">
-<img src="camun.jpg" class="project-img">
-<div class="overlay">
-<div class="project-title">Christ Academy MUN 2025</div>
-<div class="project-content">Institutional branding, reels, and grid strategy.</div>
-</div>
+<div class="project-title">CAMUN 2025</div>
+<div class="project-content">Directed social media and visual communication strategy.</div>
 </div>
 
-<!-- SECOND ROW -->
-
-<div class="project-card minimal" onclick="toggleProject(this)">
-<div class="overlay">
+<div class="project-card" onclick="toggleProject(this)">
 <div class="project-title">Project Unnathi</div>
-<div class="project-content">Millennium Fellowship — Design Head.</div>
-</div>
-</div>
-
-<div class="project-card minimal" onclick="toggleProject(this)">
-<div class="overlay">
-<div class="project-title">INTRAMUN 2024</div>
-<div class="project-content">School of Legal Studies — event branding.</div>
-</div>
+<div class="project-content">Designed outreach campaigns for social impact initiative.</div>
 </div>
 
-<div class="project-card minimal" onclick="toggleProject(this)">
-<div class="overlay">
+<div class="project-card" onclick="toggleProject(this)">
+<div class="project-title">VR Krishna Iyer Chair</div>
+<div class="project-content">Design Head for academic and institutional communications.</div>
+</div>
+
+<div class="project-card" onclick="toggleProject(this)">
 <div class="project-title">Institutional Design Leadership</div>
 <div class="project-content">
-ILSA · Placement Cell · Maritime Club · VR Krishna Iyer Chair
-</div>
+Design Head roles across ILSA, Placement Cell, and Maritime Club.
 </div>
 </div>
 
